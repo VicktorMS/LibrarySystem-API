@@ -2,6 +2,7 @@ package vicktorms.br.infnet.controller;
 
 import org.springframework.web.bind.annotation.*;
 
+import vicktorms.br.infnet.model.Address;
 import vicktorms.br.infnet.model.Book;
 import vicktorms.br.infnet.service.BookService;
 
@@ -25,6 +26,7 @@ public class BookController {
 		Book book = bookService.findBookById(id);
 		return ResponseEntity.ok(book);
 	}
+
 
 
 	@GetMapping
@@ -55,4 +57,5 @@ public class BookController {
 		bookService.deleteBook(id);
 		return ResponseEntity.noContent().build();
 	}
+
 }
