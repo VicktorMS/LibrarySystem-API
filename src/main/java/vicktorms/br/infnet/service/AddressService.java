@@ -17,7 +17,7 @@ import java.net.URL;
 public class AddressService {
 
     private static final Logger logger = LoggerFactory.getLogger(AddressService.class);
-    private String VIACEP_BASE_URL =  "https://viacep.com.br/ws/";
+    private final String VIACEP_BASE_URL = "https://viacep.com.br/ws/";
 
     public Address getAddressByCep(String cep) throws IOException {
         String jsonCep = fetchJsonFromUrl( VIACEP_BASE_URL + cep + "/json/");

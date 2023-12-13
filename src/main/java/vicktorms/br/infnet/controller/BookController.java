@@ -2,7 +2,6 @@ package vicktorms.br.infnet.controller;
 
 import org.springframework.web.bind.annotation.*;
 
-import vicktorms.br.infnet.model.Address;
 import vicktorms.br.infnet.model.Book;
 import vicktorms.br.infnet.service.BookService;
 
