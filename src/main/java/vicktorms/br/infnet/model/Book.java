@@ -7,10 +7,12 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 import java.util.Objects;
 
+import static jakarta.persistence.FetchType.EAGER;
+
 
 @Data
 @NoArgsConstructor
-//@AllArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Book {
 	@Id
@@ -26,7 +28,7 @@ public class Book {
 	@Column(nullable = true)
     private int pages;
 
-	@ElementCollection
+	@ElementCollection(targetClass = String.class, fetch = EAGER)
 	private List<String> genres;
 
 	public void updateFrom(Book updatedBook) {

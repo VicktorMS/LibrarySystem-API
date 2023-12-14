@@ -10,6 +10,7 @@ import vicktorms.br.infnet.repository.BookRepository;
 import vicktorms.br.infnet.specification.BookSpecifications;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service 
 public class BookService {
@@ -33,6 +34,7 @@ public class BookService {
 	}
 
 	public Book createBook(Book book) {
+		validateBook(book);
 		return bookRepository.save(book);
 	}
 
@@ -46,7 +48,25 @@ public class BookService {
 		Book existingBook = findBookById(id);
 		bookRepository.delete(existingBook);
 	}
-	
+
+
+	private void validateBook(Book book) {
+		Objects.requireNonNull(book, "O livro não pode ser nulo");
+
+		validateField(book.getTitle(), "O título do livro não pode ser nulo");
+		validateCondition(book.getPages() >= 0, "O livro deve ter uma quantidade de páginas válida");
+		validateField(book.getGenres(), "Os gêneros do livro não podem ser nulos");
+	}
+
+	private void validateField(Object fieldValue, String errorMessage) {
+		Objects.requireNonNull(fieldValue, errorMessage);
+	}
+
+	private void validateCondition(boolean condition, String errorMessage) {
+		if (!condition) {
+			throw new IllegalArgumentException(errorMessage);
+		}
+	}
 	
 
 }
