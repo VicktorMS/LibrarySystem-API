@@ -48,7 +48,6 @@ public class BookServiceTest {
 
         Book retrievedBook = bookRepository.findById(savedBook.getId()).orElseThrow();
 
-        // Verificações
         assertNotNull(retrievedBook.getId(), "O ID do livro não deve ser nulo");
         assertEquals(savedBook.getId(), retrievedBook.getId(), "O ID do livro não deve ser alterado");
         assertEquals(savedBook.getTitle(), retrievedBook.getTitle(), "O título do livro deve ser atualizado");
